@@ -1,0 +1,49 @@
+@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../settings/style.settings.scss';
+
+.header{
+  background: $dark-blue;
+  &__title{
+    font-size: $title-sm;
+    color: $white;
+    &--in{
+      color: $white;
+      background: $blue;
+      border-radius: 4px;
+      padding: 0 8px;
+      margin-left: 4px;
+    }
+  }
+  &__subtitle{
+    font-size: $subtitle-sm;
+    color: $white;
+  }
+}
+
+.nav-bar{
+  &__item{
+    white-space: nowrap;
+  }
+}
+
+@media screen and (min-width: $query-md) {
+  .header{
+    &_title{
+      font-size: $title-md;
+    }
+    &__subtitle{
+      font-size: $subtitle-md;
+    }
+  }
+}
+
+@media screen and (min-width: $query-lg) {
+  .header{
+    &_title{
+      font-size: $title-lg;
+    }
+    &__subtitle{
+      font-size: $subtitle-lg;
+    }
+  }
+}
