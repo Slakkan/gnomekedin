@@ -61,9 +61,28 @@ The sections are divided by commit, the first commit is naturally the biggest si
 
 > ---
 >
-> ### Created actions, reducers and a store to test redux and redux thunk.
+> ### Created actions, reducers and a store to test redux and redux thunk
 > Dispatched a mock action to login in the app which helps us verify the store and the router are working.
 > - **actions**: created synchronous and asynchronous actions to test redux-thunk middleware.
 > - **reducer**: created to test if state changes correctly.
 >
 > ---
+
+## Feature Card Component
+
+> ---
+>
+> ### Get data and handle errors
+> To test this commit you can change the CurrentPageFilter defaultState, which determines which page you are in and you can also modify the amount of entries per page at app.settings.js in the gnomesPerPage property.
+> Another thing to test would be turning off wifi to force the request to fail and see the notification component in action.
+> - Created sub-folder for the models folder to keep things organized
+> - Created new AppState which controls the general state of the app
+> - Created Models for the new reducer and cities
+> - Created new user action to getGnomeData as soon as the router mounts
+> - Created Notifications functional component to render notifications on the screen
+> - Styled Notifications functional component
+> - Created app.settings.js and constant.settings.js
+> - Created Paginator utility to keep code clean
+> - changed to store to combine the reducers and created a model for the GlobalState
+> ---
+
