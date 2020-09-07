@@ -86,3 +86,15 @@ The sections are divided by commit, the first commit is naturally the biggest si
 > - changed to store to combine the reducers and created a model for the GlobalState
 > ---
 
+> ---
+> ### Create Board and Card components
+> We get quite a lot of information from the API, because this app should be mobile friendly we need to carefully choose what and how we display things. The essential information for someone that uses our platform is name, age and profession. How it looks and whom is the gnome friends with could be latter displayed on a details component once the user is intrested in the gnome and clicks the card.
+> - Another thing to take into consideration is that profession names are very long, we need a way to display them that doesn't take much space, that's why I decided to create SVGs of the initials and have a tooltip display on hover
+> - Created Card component
+> - Created Board component
+> - Created professions SVG
+> - Created Tooltip for professions
+> - styled Card component
+> - Styled Board component
+> - Fixed styles on Header to better match new Board Styles
+> - Created fetch images utility in order to save images in localstorage so the user doesn't have to download them each time he joins.

@@ -10,6 +10,7 @@ import { appConfig } from '../../settings/app.settings';
 import { notify, createNotification } from './app.actions';
 import { CONNECTION_ERROR } from '../../settings/constants.settings';
 import { NotifyAction } from '../../models/actions/app-actions.model';
+import { fetchImages } from '../../shared/images.utility';
 
 // SYNCHRONOUS
 export function login(currentUser: User, isAdmin: boolean): LoginAction {
@@ -51,15 +52,27 @@ export function getGnomesData(): ThunkAction<void, GlobalState, null, any> {
       .then(res => res.json())
     )
       .subscribe(res => {
+        // Filters
         const gnomesInCity: User[] = res[getState().userReducer.cityFilter];
         const gnomesInPage: User[] = paginate(gnomesInCity, appConfig.gnomesPerPage, getState().userReducer.CurrentPageFilter);
-        dispatch(updateGnomes(gnomesInPage));
+
+        // Processing
+        // Fix profession format
+        const gnomeProfessionsFormatted = gnomesInPage.map(gnome => {
+          const professions = gnome.professions.map(profession => profession.trim().toUpperCase())
+          return {...gnome, professions}
+        })
+
+        const thumbnailUrls = gnomeProfessionsFormatted.map(gnome => gnome.thumbnail);
+        fetchImages(thumbnailUrls).subscribe((thumbnailLocalUrls) => {
+          const gnomes = gnomeProfessionsFormatted.map((gnome, index) => ({ ...gnome, thumbnail: thumbnailLocalUrls[index] }));
+          dispatch(updateGnomes(gnomes));
+        });
       },
         (error: Error) => {
           if (error.message.includes('Failed to fetch')) {
             dispatch(createNotification(CONNECTION_ERROR));
           }
-          console.log(error)
         });
   };
 }
