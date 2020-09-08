@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Header } from '../components/header.component';
+import Board from '../components/board.component';
 
 export interface HomeProps {
 }
@@ -13,13 +14,8 @@ export class Home extends React.Component<HomeProps, HomeState> {
     return (
       <div>
         <Header />
-        <div className="m-2 m-md-4 p-0">
-          Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit.
-          Fugiat non repudiandae perferendis,
-          voluptatem, ad dicta, saepe minus
-          dolor debitis sapiente nesciunt accusamus
-          illum optio? Eos omnis quas officiis rem iusto.
+        <div className="m-0 m-md-2 p-0">
+          <Board />
         </div>
       </div>
     );

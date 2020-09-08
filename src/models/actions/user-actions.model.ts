@@ -1,13 +1,14 @@
 import { Action } from 'redux';
 
-import { User } from './user.model';
+import { User } from '../data/user.model';
 
 // User Actions
-export type UserActions = LoginAction | ConnectAction;
+export type UserActions = LoginAction | ConnectAction | UpdateGnomesAction;
 
 export enum UserActionsTypes {
   login = "LOGIN",
-  connect = "CONNECT"
+  connect = "CONNECT",
+  getGnomes = "GET_GNOMES"
 };
 
 export interface LoginAction extends Action {
@@ -17,4 +18,9 @@ export interface LoginAction extends Action {
 
 export interface ConnectAction extends Action {
   userId: string;
+};
+
+
+export interface UpdateGnomesAction extends Action {
+  gnomes: User[]
 };

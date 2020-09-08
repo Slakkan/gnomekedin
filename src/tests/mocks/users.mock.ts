@@ -1,4 +1,6 @@
-export const mockUser = {
+import { User } from '../../models/data/user.model';
+
+export const mockUser: User = {
   id: 0,
   name: 'Tobus Quickwhistle',
   thumbnail: 'http://www.publicdomainpictures.net/pictures/10000/nahled/thinking-monkey-11282237747K8xB.jpg',
