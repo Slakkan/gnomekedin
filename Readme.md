@@ -97,4 +97,16 @@ The sections are divided by commit, the first commit is naturally the biggest si
 > - styled Card component
 > - Styled Board component
 > - Fixed styles on Header to better match new Board Styles
-> - Created fetch images utility in order to save images in localstorage so the user doesn't have to download them each time he joins.
+> - Created fetch images utility in order to save images in localstorage so the user doesn't have to download them each time he joins
+> ---
+
+> ---
+> ### Added Unit Tests
+> Installed Jest and Enzyme to test components and functionality. Configured ts-jest in order to have types on my unit tests aswell.
+> - Tested Card component with a shallow render
+> - Tested images and paginator utilities
+> - Created mock for the styles and files as I decided not to test those
+> - Changed name of param in the paginator to currentPageIndex, which describes more acurately what the param is about
+> - Configured typescript modules to output commonjs since jest runs in node
+> - Added .snap files to the git ignore since they are generated files and as such, do not belong in github
+> ---
