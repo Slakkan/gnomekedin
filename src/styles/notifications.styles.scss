@@ -1,0 +1,19 @@
+@import '../settings//style.settings.scss';
+
+.notification {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border-radius: 4px;
+  background: $red;
+  &__message {
+    color: $white;
+  }
+  &--active{
+    opacity: 1;
+  }
+  &--inactive{
+    transition: opacity ease-out 0.8s;
+    opacity: 0;
+  }
+}
