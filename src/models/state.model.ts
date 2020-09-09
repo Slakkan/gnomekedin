@@ -1,9 +1,9 @@
 import { User } from './data/user.model';
 import { Cities } from './data/city.model';
 
-export interface GlobalState{
+export interface GlobalState {
   appReducer: AppState;
-  userReducer: UserState
+  userReducer: UserState;
 }
 
 export interface UserState {
@@ -11,11 +11,13 @@ export interface UserState {
   isAdmin?: boolean;
   connectionsIds: string[];
   cityFilter: Cities;
-  CurrentPageFilter: number;
-  gnomes: User[]
+  currentPageIndexFilter: number;
+  totalPages: number,
+  gnomes: User[];
 };
 
-export interface AppState{
+export interface AppState {
   currentNotification: string;
   isNotificationActive: boolean;
+  isBoardLoading: boolean;
 }

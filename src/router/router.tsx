@@ -1,17 +1,17 @@
 import * as React from "react";
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 
 import PublicRoute from './public-route';
 import PrivateRoute from './private-route';
+import { getGnomesData } from '../store/actions/user.actions';
+import { GlobalState } from '../models/state.model';
 
 // Pages
 import { Home } from '../pages/home.page';
 import { ControlPanel } from '../pages/control-panel.page';
 import { NotFound } from '../pages/not-found.page';
-import { GlobalState } from '../models/state.model';
-import { connect } from 'react-redux';
-import { getGnomesData } from '../store/actions/user.actions';
 import Notifications from '../components/notifications.component';
 
 
@@ -58,7 +58,11 @@ function mapStateToProps(state: GlobalState) {
 
 function mapDispatchToProps(dispatch: Dispatch) {
   return {
-    getGnomes: () => dispatch<any>(getGnomesData())
+    getGnomes: () => {
+      const lastSessionsPage = localStorage.getItem('lastSessionsPage');
+      const page = lastSessionsPage ? +lastSessionsPage : 0;
+      dispatch<any>(getGnomesData(page, true));
+    }
   };
 }
 

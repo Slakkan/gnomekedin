@@ -1,5 +1,5 @@
 import { UserState } from '../../models/state.model';
-import { UserActions, UserActionsTypes, LoginAction, ConnectAction, UpdateGnomesAction } from '../../models/actions/user-actions.model';
+import { UserActions, UserActionsTypes, LoginAction, ConnectAction, UpdateGnomesAction, ChangePageAction } from '../../models/actions/user-actions.model';
 import { Cities } from '../../models/data/city.model';
 
 const defaultState: UserState = {
@@ -7,7 +7,8 @@ const defaultState: UserState = {
   isAdmin: false,
   connectionsIds: [],
   cityFilter: Cities.Brastlewark,
-  CurrentPageFilter: 0,
+  currentPageIndexFilter: 0,
+  totalPages: 0,
   gnomes: []
 };
 
@@ -31,6 +32,13 @@ export default function userReducer(state: UserState = defaultState, action: Use
       return {
         ...state,
         gnomes: getGnomesAction.gnomes
+      };
+    case UserActionsTypes.changePage:
+      const changePageAction = action as ChangePageAction;
+      return {
+        ...state,
+        currentPageIndexFilter: changePageAction.currentPageIndexFilter,
+        totalPages: changePageAction.totalPages ? changePageAction.totalPages : state.totalPages
       };
     default:
       return state;

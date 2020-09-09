@@ -84,9 +84,11 @@ The sections are divided by commit, the first commit is naturally the biggest si
 > - Created app.settings.js and constant.settings.js
 > - Created Paginator utility to keep code clean
 > - changed to store to combine the reducers and created a model for the GlobalState
+>
 > ---
 
 > ---
+>
 > ### Create Board and Card components
 > We get quite a lot of information from the API, because this app should be mobile friendly we need to carefully choose what and how we display things. The essential information for someone that uses our platform is name, age and profession. How it looks and whom is the gnome friends with could be latter displayed on a details component once the user is intrested in the gnome and clicks the card.
 > - Another thing to take into consideration is that profession names are very long, we need a way to display them that doesn't take much space, that's why I decided to create SVGs of the initials and have a tooltip display on hover
@@ -98,9 +100,11 @@ The sections are divided by commit, the first commit is naturally the biggest si
 > - Styled Board component
 > - Fixed styles on Header to better match new Board Styles
 > - Created fetch images utility in order to save images in localstorage so the user doesn't have to download them each time he joins
+>
 > ---
 
 > ---
+>
 > ### Added Unit Tests
 > Installed Jest and Enzyme to test components and functionality. Configured ts-jest in order to have types on my unit tests aswell.
 > - Tested Card component with a shallow render
@@ -109,4 +113,20 @@ The sections are divided by commit, the first commit is naturally the biggest si
 > - Changed name of param in the paginator to currentPageIndex, which describes more acurately what the param is about
 > - Configured typescript modules to output commonjs since jest runs in node
 > - Added .snap files to the git ignore since they are generated files and as such, do not belong in github
+>
+> ---
+
+## Feature Pagination Component
+
+> ---
+>
+> ### Created Pagination component
+> The paginator can be configured to have different sizes according to screen resolution. I decided to have 3 configurations, one for mobile, another for tablet and the last one for desktop. While working on this feature I found and fixed a bug in the paginator utility and created a loading component to give visual feedback to the user while the page loads.
+> - Created Pagination and Loading components
+> - Styled Pagination and Loading components
+> - Added actions to change current page
+> - The app now remembers the last page the user left of and also calculates the amount of total pages on first load
+> - Fixed home and board styles to acomodate new Pagination component
+> - Fixed paginator utility
+>
 > ---
