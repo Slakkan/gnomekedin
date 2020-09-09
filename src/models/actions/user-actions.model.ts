@@ -3,12 +3,13 @@ import { Action } from 'redux';
 import { User } from '../data/user.model';
 
 // User Actions
-export type UserActions = LoginAction | ConnectAction | UpdateGnomesAction;
+export type UserActions = LoginAction | ConnectAction | UpdateGnomesAction | ChangePageAction;
 
 export enum UserActionsTypes {
   login = "LOGIN",
   connect = "CONNECT",
-  getGnomes = "GET_GNOMES"
+  getGnomes = "GET_GNOMES",
+  changePage = "CHANGE_PAGE"
 };
 
 export interface LoginAction extends Action {
@@ -24,3 +25,8 @@ export interface ConnectAction extends Action {
 export interface UpdateGnomesAction extends Action {
   gnomes: User[]
 };
+
+export interface ChangePageAction extends Action {
+  currentPageIndexFilter: number,
+  totalPages?: number
+}

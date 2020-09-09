@@ -13,17 +13,30 @@ export function fetchImages(urls: string[]): Observable<string[]> {
       const decodedValue = decode(encodedValue);
       const newBlob = new Blob([decodedValue], { type: 'image/jpeg' });
       const reference = URL.createObjectURL(newBlob);
-      return of(reference)
+      return of(reference);
     } else {
       return from(fetch('https://cors-anywhere.herokuapp.com/' + url, requestOptions)
-        .then(res => res.blob())
+        .then(res => {
+          if(res.status !==200) {
+            throw new Error('Could not fetch data')
+          }
+          return res.blob()
+        })
         .then(blob => {
           blob.arrayBuffer().then(buffer => {
             const encodedValue = encode(buffer);
-            localStorage.setItem(url, encodedValue);
+            try {
+              localStorage.setItem(url, encodedValue);
+            }
+            catch{
+              // No more space on LocalStorage
+              const lastSessionPage = localStorage.getItem('lastSessionsPage') + ''
+              localStorage.clear()
+              localStorage.setItem('lastSessionsPage', lastSessionPage)
+            }
           });
           return URL.createObjectURL(blob);
-        }));
+        }).catch(err => err));
     }
   });
   return forkJoin(requests);

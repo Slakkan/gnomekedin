@@ -1,5 +1,4 @@
 import { fetchImages } from '../../shared/images.utility';
-import { Observable } from 'rxjs';
 import { encode, decode } from 'typescript-base64-arraybuffer';
 
 jest.mock('typescript-base64-arraybuffer', () => ({
@@ -19,6 +18,7 @@ describe('Images utility', () => {
     const mockBlobPromise = Promise.resolve(mockSuccessResponse);
     const mockFetchPromise = Promise.resolve({
       blob: () => mockBlobPromise,
+      status: 200
     });
 
     const mockFunction = jest.fn().mockImplementation(() => mockFetchPromise);

@@ -12,9 +12,9 @@ export interface HomeState {
 export class Home extends React.Component<HomeProps, HomeState> {
   render() {
     return (
-      <div>
+      <div className="d-flex flex-column h-100">
         <Header />
-        <div className="m-0 m-md-2 p-0">
+        <div className="m-0 m-md-2 p-0 h-100">
           <Board />
         </div>
       </div>
